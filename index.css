@@ -1,0 +1,550 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-japanese: 'Shojumaru', 'Yuji Boku', serif;
+    --font-cyber: 'Cinzel', serif;
+    --border-laser-speed: 6s;
+    --laser-color-primary: #ef4444;
+    --laser-color-glow: rgba(239, 68, 68, 0.6);
+  }
+
+  body {
+    background-color: #050507;
+    color: #f4f4f5;
+    overflow-x: hidden;
+  }
+}
+
+/* Japanese & Cyber Typography */
+.font-japanese {
+  font-family: 'Shojumaru', 'Yuji Boku', serif;
+  letter-spacing: 0.04em;
+}
+
+.font-cyber {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.05em;
+}
+
+/* Japan Wave Artistic Lettering Style */
+.font-japan-wave {
+  font-family: 'Zen Dots', 'Shojumaru', 'Kaushan Script', cursive, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* High Legibility Lettering Classes - No Unreadable Dark Text */
+* {
+  color-scheme: dark;
+}
+
+/* Force override any accidental black or dark text to high-contrast bright red or pure white */
+.text-black, 
+.text-zinc-950, 
+.text-neutral-950,
+.text-zinc-900, 
+.text-neutral-900, 
+.text-gray-900, 
+.text-stone-900,
+.text-slate-900 {
+  color: #ff2a4b !important;
+  text-shadow: 0 0 8px rgba(255, 42, 75, 0.5);
+}
+
+.text-white-crisp {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.text-red-outline {
+  color: #ff1a3c !important;
+  font-weight: 800;
+  text-shadow: 
+    -1px -1px 0 #ffffff,
+    1px -1px 0 #ffffff,
+    -1px 1px 0 #ffffff,
+    1px 1px 0 #ffffff,
+    0 0 12px rgba(255, 26, 60, 0.8),
+    0 0 24px rgba(220, 38, 38, 0.5);
+}
+
+/* KasA High-Contrast Japanese Bright Red Typography */
+.kasa-text-bright-red {
+  color: #ff2a4b !important;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(255, 42, 75, 0.65), 0 0 20px rgba(220, 38, 38, 0.4);
+}
+
+.kasa-text-pop-outline {
+  color: #ffffff !important;
+  font-weight: 800;
+  text-shadow: 
+    -1px -1px 0 #ef4444,
+    1px -1px 0 #ef4444,
+    -1px 1px 0 #ef4444,
+    1px 1px 0 #ef4444,
+    0 0 10px rgba(239, 68, 68, 0.7);
+}
+
+.kasa-text-flame-outline {
+  color: #ff3838 !important;
+  font-weight: 800;
+  text-shadow: 
+    -1px -1px 0 #000000,
+    1px -1px 0 #000000,
+    -1px 1px 0 #000000,
+    1px 1px 0 #000000,
+    0 0 12px rgba(255, 56, 56, 0.9);
+}
+
+.kasa-badge-crimson {
+  background-color: rgba(127, 29, 29, 0.85) !important;
+  border: 1px solid #ef4444 !important;
+  color: #ffffff !important;
+  text-shadow: 0 0 4px #ff4d4d;
+}
+
+.text-crimson-glow {
+  color: #ffffff;
+  text-shadow: 
+    0 0 2px #ffffff,
+    0 0 6px #ef4444,
+    0 0 14px #dc2626,
+    0 0 24px #991b1b;
+}
+
+/* KasA Neon Crimson Trim */
+.kasa-neon-trim {
+  border: 1.5px solid #ef4444;
+  box-shadow: 
+    0 0 10px rgba(239, 68, 68, 0.6),
+    0 0 20px rgba(220, 38, 38, 0.3),
+    inset 0 0 10px rgba(239, 68, 68, 0.2);
+}
+
+.kasa-neon-trim-strong {
+  border: 2px solid #ff1744;
+  box-shadow: 
+    0 0 14px rgba(255, 23, 68, 0.8),
+    0 0 30px rgba(220, 38, 38, 0.5),
+    inset 0 0 14px rgba(255, 23, 68, 0.35);
+}
+
+/* Unified Legible Chat & Input Style */
+.kasa-input-box {
+  background-color: rgba(10, 10, 14, 0.94);
+  color: #ffffff !important;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0,0,0,0.5);
+  transition: all 0.2s ease;
+}
+
+.kasa-input-box:focus {
+  border-color: #ef4444;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.9),
+    0 0 12px rgba(239, 68, 68, 0.5);
+  outline: none;
+}
+
+.kasa-input-box::placeholder {
+  color: #9ca3af !important;
+}
+
+/* =========================================================
+   THIN GLOWING KATANA SLICE EFFECT ANIMATIONS
+   ========================================================= */
+
+@keyframes katana-slice-beam {
+  0% {
+    opacity: 0;
+    transform: translate(-100%, -100%) rotate(-35deg) scaleX(0.1);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(0%, 0%) rotate(-35deg) scaleX(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(60%, 60%) rotate(-35deg) scaleX(1.4);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(150%, 150%) rotate(-35deg) scaleX(2);
+  }
+}
+
+@keyframes screen-slash-split-top {
+  0% {
+    transform: translate(0, 0);
+  }
+  15% {
+    transform: translate(-8px, -4px) skewX(-1deg);
+  }
+  45% {
+    transform: translate(-4px, -2px) skewX(-0.5deg);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes screen-slash-split-bottom {
+  0% {
+    transform: translate(0, 0);
+  }
+  15% {
+    transform: translate(8px, 4px) skewX(1deg);
+  }
+  45% {
+    transform: translate(4px, 2px) skewX(0.5deg);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.katana-cut-line {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  height: 2px;
+  width: 250vw;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 50, 80, 0.6) 20%,
+    #ffffff 50%,
+    rgba(255, 50, 80, 0.9) 70%,
+    transparent 100%
+  );
+  box-shadow: 
+    0 0 8px #ffffff,
+    0 0 18px #ff0033,
+    0 0 32px #e11d48;
+}
+
+/* =========================================================
+   KOI POND WATER & KASA BURST ANIMATIONS
+   ========================================================= */
+
+@keyframes koi-swim-sinuous {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(4deg) translateY(3px);
+  }
+}
+
+@keyframes water-ripple-expand {
+  0% {
+    transform: scale(0.2);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(3.5);
+    opacity: 0;
+  }
+}
+
+@keyframes kasa-burst-surge {
+  0% {
+    transform: scale(0.1) translateY(40px) rotate(-15deg);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1.15) translateY(-20px) rotate(5deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 35px #ff0033);
+  }
+  70% {
+    transform: scale(1) translateY(0px) rotate(0deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 25px #ef4444);
+  }
+  100% {
+    transform: scale(1.05) translateY(-5px);
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   CUSTOMIZABLE BACKGROUND THEMES (Black & Red Aesthetics)
+   ========================================================= */
+
+/* 1. Cyber Katana Grid */
+.bg-theme-cyber-katana {
+  background-color: #050507;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(220, 38, 38, 0.22) 0%, transparent 70%),
+    radial-gradient(circle at 85% 60%, rgba(185, 28, 28, 0.12) 0%, transparent 50%),
+    linear-gradient(to right, rgba(220, 38, 38, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(220, 38, 38, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+  background-attachment: fixed;
+}
+
+/* 2. Crimson Nebula */
+.bg-theme-crimson-nebula {
+  background-color: #040406;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(239, 68, 68, 0.25) 0%, transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(153, 27, 27, 0.2) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 50%, rgba(30, 0, 0, 0.8) 0%, transparent 100%);
+  background-attachment: fixed;
+}
+
+/* 3. Blood Wave Matrix */
+.bg-theme-blood-wave {
+  background-color: #060608;
+  background-image: 
+    linear-gradient(135deg, rgba(220, 38, 38, 0.07) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(220, 38, 38, 0.07) 25%, transparent 25%),
+    linear-gradient(45deg, rgba(220, 38, 38, 0.07) 25%, transparent 25%),
+    linear-gradient(315deg, rgba(220, 38, 38, 0.07) 25%, #060608 25%);
+  background-position: 18px 0, 18px 0, 0 0, 0 0;
+  background-size: 36px 36px;
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+/* 4. Obsidian Stealth */
+.bg-theme-obsidian-stealth {
+  background-color: #030304;
+  background-image: radial-gradient(ellipse at 50% -20%, rgba(220, 38, 38, 0.15) 0%, transparent 75%);
+  background-attachment: fixed;
+}
+
+/* =========================================================
+   SOLID MOVING BORDER ANIMATION (Perimeter Laser Track)
+   ========================================================= */
+
+@keyframes border-conic-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.moving-border-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.moving-border-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    transparent 0deg,
+    transparent 280deg,
+    var(--laser-color-primary, #ef4444) 340deg,
+    #ffffff 355deg,
+    var(--laser-color-primary, #ef4444) 360deg
+  );
+  animation: border-conic-spin var(--border-laser-speed, 6s) linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.moving-border-inner {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(9, 9, 12, 0.95);
+  border-radius: calc(1rem - 2px);
+  margin: 2px;
+}
+
+/* Speed variations */
+.laser-speed-slow {
+  --border-laser-speed: 12s;
+}
+.laser-speed-normal {
+  --border-laser-speed: 6s;
+}
+.laser-speed-fast {
+  --border-laser-speed: 3s;
+}
+
+/* Color variations */
+.laser-color-crimson {
+  --laser-color-primary: #ef4444;
+  --laser-color-glow: rgba(239, 68, 68, 0.7);
+}
+.laser-color-sakura {
+  --laser-color-primary: #fb7185;
+  --laser-color-glow: rgba(251, 113, 133, 0.7);
+}
+.laser-color-flame {
+  --laser-color-primary: #f97316;
+  --laser-color-glow: rgba(249, 115, 22, 0.7);
+}
+.laser-color-ruby {
+  --laser-color-primary: #b91c1c;
+  --laser-color-glow: rgba(185, 28, 28, 0.7);
+}
+
+/* =========================================================
+   DETAILED BLACK & RED BUTTONS WITH RANDOM SHINE EFFECT
+   ========================================================= */
+
+@keyframes katana-shine-sweep {
+  0% {
+    transform: translateX(-150%) skewX(-25deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  35% {
+    transform: translateX(250%) skewX(-25deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(250%) skewX(-25deg);
+    opacity: 0;
+  }
+}
+
+/* Staggered random periods to create asynchronous glistening */
+.shine-random-1 {
+  animation: katana-shine-sweep 7.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation-delay: 1.2s;
+}
+
+.shine-random-2 {
+  animation: katana-shine-sweep 9.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation-delay: 3.5s;
+}
+
+.shine-random-3 {
+  animation: katana-shine-sweep 6.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation-delay: 0.4s;
+}
+
+.shine-random-4 {
+  animation: katana-shine-sweep 11.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation-delay: 5.8s;
+}
+
+.shine-random-5 {
+  animation: katana-shine-sweep 8.3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation-delay: 2.1s;
+}
+
+/* Core Detailed Black & Red Button Class */
+.kasa-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid rgba(220, 38, 38, 0.5);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 100, 100, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+}
+
+.kasa-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(239, 68, 68, 0.9);
+  box-shadow: 
+    0 4px 15px rgba(220, 38, 38, 0.35),
+    inset 0 1px 0 rgba(255, 150, 150, 0.4),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.8);
+}
+
+.kasa-btn:active {
+  transform: translateY(1px);
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.9),
+    inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Primary Rich Red Action Button */
+.kasa-btn-primary {
+  background: linear-gradient(180deg, #dc2626 0%, #991b1b 50%, #7f1d1d 100%);
+  color: #ffffff;
+  border-color: #ef4444;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.kasa-btn-primary:hover {
+  background: linear-gradient(180deg, #ef4444 0%, #b91c1c 50%, #991b1b 100%);
+  color: #ffffff;
+}
+
+/* Secondary Obsidian-Crimson Beveled Button */
+.kasa-btn-secondary {
+  background: linear-gradient(180deg, #18181b 0%, #0c0a09 60%, #09090b 100%);
+  color: #e4e4e7;
+  border-color: rgba(220, 38, 38, 0.4);
+}
+
+.kasa-btn-secondary:hover {
+  background: linear-gradient(180deg, #27272a 0%, #1c1917 60%, #18181b 100%);
+  color: #ffffff;
+  border-color: rgba(239, 68, 68, 0.8);
+}
+
+/* Danger / Execute Deep Blood Red Button */
+.kasa-btn-danger {
+  background: linear-gradient(180deg, #b91c1c 0%, #7f1d1d 60%, #450a0a 100%);
+  color: #ffffff;
+  border-color: #dc2626;
+}
+
+.kasa-btn-danger:hover {
+  background: linear-gradient(180deg, #dc2626 0%, #991b1b 60%, #5c0f0f 100%);
+  color: #ffffff;
+}
+
+/* Shine beam overlay inside buttons */
+.kasa-btn-shine-beam {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.02) 25%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 200, 200, 0.85) 52%,
+    rgba(255, 255, 255, 0.6) 54%,
+    rgba(255, 255, 255, 0.02) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Subtle glowing pulse for badges */
+@keyframes kasa-badge-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(220, 38, 38, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(220, 38, 38, 0.8);
+  }
+}
+
+.kasa-pulse-badge {
+  animation: kasa-badge-pulse 3s infinite ease-in-out;
+}

@@ -1,0 +1,10 @@
+{
+  "name": "KasA - Personal Ai Catalyst",
+  "description": "Sovereign Personal AI Catalyst and Autonomous LLM architecture engineered by Scott Gushea.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
